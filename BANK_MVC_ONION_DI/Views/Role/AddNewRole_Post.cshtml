@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.TODO</title>
+    </head>
+    <body>
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal" align="center">
+                <p>Введите логин пользователя: </p>
+                @Html.Editor("login", "Логин пользователя")
+                <p>ViewBag.Result</p>
+                <p>Введите название роли :</p>
+                @Html.Editor("role", "Название роли")
+                <p>ViewBag.Result</p>
+                <br />
+                <p><input type="submit" value="ПОПРОБОВАТЬ ДОБАВИТЬ ЕЩЕ РАЗ" /></p>
+            </div>
+         }
+    </body>
+</html>
