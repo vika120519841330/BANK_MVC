@@ -1,4 +1,5 @@
 ﻿using BANK_MVC_ONION_DI.Identity;
+using BANK_MVC_ONION_DI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -22,6 +23,37 @@ namespace BANK_MVC_ONION_DI.Services
             this.authenticationManager = authenticationManager;
             this.roleManager = roleManager;
         }
+
+        //"Role management" стартовая страница
+        [Authorize(Roles = "admin")]
+        public ActionResult AllRoles()
+        {
+            Dictionary<string, List<string>> rolesANDusers = new Dictionary<string, List<string>>();
+            var allUsers = userManager.Users.ToList();
+            foreach (var user in allUsers)
+            {
+                List<string> allRoles = userManager.GetRoles(user.Id).ToList();
+                List<string> allRolesOfUser = new List<string>();
+                
+                foreach (string role in allRoles)
+                {
+                    if (!rolesANDusers.ContainsKey(user.UserName))
+                    {
+                        allRolesOfUser.Add(role);
+                        rolesANDusers.Add(user.UserName, allRolesOfUser);
+                    }
+                    else
+                    {
+                        rolesANDusers[user.UserName].Add(", ");
+                        rolesANDusers[user.UserName].Add(role);
+                    }
+                    ViewBag.UserId = user.Id;
+                }
+            }
+            ViewBag.Header = "СПИСОК ВСЕХ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ:";
+            return View(rolesANDusers);
+        }
+
         //Добавление для пользователя новой роли - по логину пользователя
         // GET: /Manage/AddNewRole
         public ActionResult AddNewRole_Get()
@@ -65,7 +97,6 @@ namespace BANK_MVC_ONION_DI.Services
                 ViewBag.Result = $"Пользователь с логином: {foundUser.UserName}\0\0 обладает следующими ролями:";
                 return View("AddNewRole_Success");
             }
-            
         }
     }
 }

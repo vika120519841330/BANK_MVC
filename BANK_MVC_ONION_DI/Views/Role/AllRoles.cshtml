@@ -1,0 +1,61 @@
+﻿@model Dictionary<string, List<string>>
+@{
+    ViewBag.Title = "AllRoles";
+    Layout = "~/Views/Shared/_Layout_for_Admin.cshtml";
+}
+   <p></p>
+     <table class="table" border="1" cellspacing="0" align="center">
+        <tr align="center">
+            <th colspan="3" align="center" valign="middle">
+                @ViewBag.Header
+            </th>
+        </tr>
+        <tr align="center">
+            <th align="center">
+                ПОЛЬЗОВАТЕЛЬ
+            </th>
+            <th align="center">
+                РОЛЬ
+            </th>
+            <th align="center">
+                ДЕЙСТВИЯ НАД РОЛЯМИ ПОЛЬЗОВАТЕЛЯ
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+         <tr>
+             <td>
+                 @Html.DisplayFor(modelItem => item.Key)
+             </td>
+             <td>
+                 @Html.DisplayFor(modelItem => item.Value)
+             </td>
+             <td>
+                 <table class="table" border="0" cellpadding="0" align="center">
+                     
+                         <td align="center">
+                             <form>
+                                 <button class="knopka_2" type="button">
+                                     <p>
+                                         @Html.ActionLink("Добавить новую роль", "", new { id = ViewBag.UserId })
+                                     </p>
+                                 </button>
+                             </form>
+                         </td>
+                         <td align="center">
+                             <form>
+                                 <button class="knopka_2" type="button">
+                                     <p>
+                                     <p>
+                                         @Html.ActionLink("Удалить существующую роль", "", new { id = ViewBag.UserId })
+                                     </p>
+                                 </button>
+                             </form>
+                         </td>
+                 </table>
+            </td>
+         </tr>
+        }
+    </table>
+
+

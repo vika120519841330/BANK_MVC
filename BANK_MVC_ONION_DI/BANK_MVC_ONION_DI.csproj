@@ -264,6 +264,9 @@
     <Content Include="Views\Role\AddNewRole_Get.cshtml" />
     <Content Include="Views\Role\AddNewRole_Post.cshtml" />
     <Content Include="Views\Role\AddNewRole_Success.cshtml" />
+    <Content Include="Views\Home\Index_Admin.cshtml" />
+    <Content Include="Views\Shared\_Layout_for_Admin.cshtml" />
+    <Content Include="Views\Role\AllRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

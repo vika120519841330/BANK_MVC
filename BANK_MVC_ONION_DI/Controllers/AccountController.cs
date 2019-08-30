@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BANK_MVC_ONION_DI.Models;
 using BANK_MVC_ONION_DI.Identity;
+using BANK_MVC_ONION_DI.Services;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BANK_MVC_ONION_DI.Controllers
 {
@@ -32,6 +34,14 @@ namespace BANK_MVC_ONION_DI.Controllers
             return View();
         }
 
+        // Вспомогательный метод - для определения относится ли зарегистрированный ользователь к определеноой роли?
+        public bool CheckAccountIsInRole(string email, string role)
+        {
+            var user = userManager.Users.FirstOrDefault(_ => _.Email == email);
+            var inrole = userManager.IsInRole(user.Id, role);
+            return inrole;
+        }
+
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -47,7 +57,13 @@ namespace BANK_MVC_ONION_DI.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        if (this.CheckAccountIsInRole(model.Email, "admin"))
+                        {
+                            return View("~/Views/Home/Index_Admin.cshtml");
+                        }
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
