@@ -1,0 +1,6 @@
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Infrastructure\bin\Debug\Infrastructure.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Infrastructure\bin\Debug\Infrastructure.pdb
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Infrastructure\obj\Debug\Infrastructure.csprojAssemblyReference.cache
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Infrastructure\obj\Debug\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Infrastructure\obj\Debug\Infrastructure.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Infrastructure\obj\Debug\Infrastructure.pdb

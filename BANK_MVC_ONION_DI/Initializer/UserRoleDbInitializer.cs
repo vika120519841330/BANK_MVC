@@ -2,11 +2,7 @@
 using BANK_MVC_ONION_DI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace BANK_MVC_ONION_DI.Initializer
 {

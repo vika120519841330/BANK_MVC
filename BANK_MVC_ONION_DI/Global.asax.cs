@@ -17,8 +17,6 @@ namespace BANK_MVC_ONION_DI
         {
             Database.SetInitializer<ApplicationDbContext>(new UserRoleDbInitializer());
 
-            //DBInitializer_Role_User db = new DBInitializer_Role_User();
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -8,6 +8,8 @@ using System.Web;
 using Unity;
 using Unity.Injection;
 using Unity.Lifetime;
+using DependencyInjection.Modules;
+using DependencyInjection.Interfaces;
 
 namespace BANK_MVC_ONION_DI
 {
@@ -20,7 +22,9 @@ namespace BANK_MVC_ONION_DI
               RegisterTypes(container);
               return container;
           });
+
         public static IUnityContainer Container => container.Value;
+
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<ApplicationDbContext>();
@@ -44,6 +48,17 @@ namespace BANK_MVC_ONION_DI
             container.RegisterType<RoleManager<IdentityRole>>(new HierarchicalLifetimeManager());
 
             container.RegisterType<ApplicationDbContext>(new InjectionConstructor());
+
+            // –егистрируем модули в рамках контейнера Container
+            Registre<DomainModule>(container);
+            Registre<InfrastructureModule>(container);
+        }
+
+        // »нициализируем экземпл€р модул€ и вызываем метод Register, передава€ целевой Container 
+        // дл€ регистрации зависимостей
+        private static void Registre<T>(IUnityContainer container) where T : IModule, new()
+        {
+                new T().Register(container);
         }
     }
 }

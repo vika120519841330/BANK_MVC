@@ -1,0 +1,11 @@
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\obj\Debug\DomainServices.csprojAssemblyReference.cache
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\obj\Debug\DomainServices.csproj.CoreCompileInputs.cache
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\bin\Debug\DomainServices.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\bin\Debug\DomainServices.pdb
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\bin\Debug\Domain.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\bin\Debug\Infrastructure.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\bin\Debug\Domain.pdb
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\bin\Debug\Infrastructure.pdb
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\obj\Debug\DomainServices.csproj.CopyComplete
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\obj\Debug\DomainServices.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\DomainServices\obj\Debug\DomainServices.pdb

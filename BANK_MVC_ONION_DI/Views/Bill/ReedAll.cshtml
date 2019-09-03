@@ -1,0 +1,73 @@
+﻿@using BANK_MVC_ONION_DI.Models
+@model IEnumerable<Bill_ViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+    <title>ViewBag.Header</title>
+</head>
+<body>
+    <form>
+        <button class="knopka_1" type="button">
+            <p>
+                @Html.ActionLink("Добавить новый р/с", "Create_Get")
+            </p>
+        </button>
+    </form>
+    <br />
+    <form>
+        <button class="knopka_2" type="button">
+            <p>
+                @Html.ActionLink("Найти р/с по ID", "ReedOne_Get_1")
+            </p>
+        </button>
+    </form>
+    <table class="table" border="1" cellpadding="4" cellspacing="0" align="center">
+        <tr>
+            <th colspan="7">
+                @ViewBag.Header
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BillNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillBalance)
+            </th>
+            <th>
+                @Html.DisplayName("ID владельца р/с:")
+            </th>
+            <th>
+                Действия:
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BillNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BillBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client_ViewModelId)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Update_Get", new { Id = item.Id }) |
+                    @Html.ActionLink("Просмотреть", "ReedOne_Get_2", new { Id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete_Get_2", new { Id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
