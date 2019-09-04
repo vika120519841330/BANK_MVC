@@ -1,0 +1,6 @@
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Domain\bin\Release\Domain.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Domain\bin\Release\Domain.pdb
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Domain\obj\Release\Domain.csprojAssemblyReference.cache
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Domain\obj\Release\Domain.csproj.CoreCompileInputs.cache
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Domain\obj\Release\Domain.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\Domain\obj\Release\Domain.pdb

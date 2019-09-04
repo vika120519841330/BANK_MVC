@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.TODO</title>
+</head>
+<body>
+    <div>
+        @ViewBag.Result
+    </div>
+    <table align="center" border="1">
+        <thead>
+            <tr>
+                <th>
+                    USER
+                </th>
+                <th>
+                    ROLE
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var r in @ViewBag.listofrolesofuser)
+            {
+            <tr>
+                <td>@(++ViewBag.Num)</td>
+                <td>@r.RoleId</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
