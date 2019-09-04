@@ -14,12 +14,12 @@
         @using (Html.BeginForm())
         {
             <div class="form-horizontal" align="center">
-                <p>Введите логин пользователя: </p>
-                @Html.Editor("login", "Логин пользователя")
-                <p>ViewBag.Result</p>
-                <p>Введите название роли :</p>
+                <p>Имя пользователя: </p>
+                @Html.Editor("name", "Имя пользователя")
+                <p>Выберите требуемую роль:</p>
                 @Html.Editor("role", "Название роли")
-                <p>ViewBag.Result</p>
+                <p></p>
+                <p>@ViewBag.Result</p>
                 <br />
                 <p><input type="submit" value="ПОПРОБОВАТЬ ДОБАВИТЬ ЕЩЕ РАЗ" /></p>
             </div>

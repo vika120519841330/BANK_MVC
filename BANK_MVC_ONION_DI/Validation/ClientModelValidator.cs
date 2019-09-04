@@ -51,6 +51,7 @@ namespace BANK_MVC_ONION_DI.Validation
             // Длина поля, если клиент является юр.лицом
             RuleFor(_ => _.ClientTaxpayNum)
                 .Length(9)
+                .WithName("Учетный номер налогоплательщика")
                 .When(_ => _.ClientMarkJuridical == true)
                 .WithMessage("УНН должен содержать 9 цифр.")
                 ;
@@ -59,6 +60,7 @@ namespace BANK_MVC_ONION_DI.Validation
             RuleFor(_ => _.ClientTaxpayNum)
                 .Length(14)
                 .WithName("Номер паспорта")
+                .When(_ => _.ClientMarkJuridical == false)
                 .WithMessage("Номер паспорта (идентификационный номер паспорта) должен содержать 14 цифр.")
                 ;
         }

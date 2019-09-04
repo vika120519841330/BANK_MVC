@@ -6,7 +6,7 @@
    <p></p>
      <table class="table" border="1" cellspacing="0" align="center">
         <tr align="center">
-            <th colspan="3" align="center" valign="middle">
+            <th colspan="5" align="center" valign="middle">
                 @ViewBag.Header
             </th>
         </tr>
@@ -15,46 +15,60 @@
                 ПОЛЬЗОВАТЕЛЬ
             </th>
             <th align="center">
+                ID ПОЛЬЗОВАТЕЛЯ
+            </th>
+            <th align="center">
                 РОЛЬ
             </th>
             <th align="center">
                 ДЕЙСТВИЯ НАД РОЛЯМИ ПОЛЬЗОВАТЕЛЯ
             </th>
+            <th align="center">
+                № п/п
+            </th>
         </tr>
         @foreach (var item in Model)
         {
-         <tr>
-             <td>
-                 @Html.DisplayFor(modelItem => item.Key)
-             </td>
-             <td>
-                 @Html.DisplayFor(modelItem => item.Value)
-             </td>
-             <td>
-                 <table class="table" border="0" cellpadding="0" align="center">
-                     
-                         <td align="center">
-                             <form>
-                                 <button class="knopka_2" type="button">
-                                     <p>
-                                         @Html.ActionLink("Добавить новую роль", "", new { id = ViewBag.UserId })
-                                     </p>
-                                 </button>
-                             </form>
-                         </td>
-                         <td align="center">
-                             <form>
-                                 <button class="knopka_2" type="button">
-                                     <p>
-                                     <p>
-                                         @Html.ActionLink("Удалить существующую роль", "", new { id = ViewBag.UserId })
-                                     </p>
-                                 </button>
-                             </form>
-                         </td>
-                 </table>
-            </td>
-         </tr>
+     <tr>
+         <td>
+             @Html.DisplayFor(modelItem => item.Key)
+         </td>
+         <td>
+             @ViewBag.ListUserId[ViewBag.Num]
+
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.Value)
+         </td>
+         <td>
+             <table class="table" border="0" cellpadding="0" align="center">
+
+                 <td align="center">
+                     <form>
+                         <button class="knopka_1" type="button">
+                             <p>
+                                 @Html.ActionLink("Добавить новую роль", "AddNewRole_Get", new { id =  @ViewBag.ListUserId[ViewBag.Num] })
+                             </p>
+                         </button>
+                     </form>
+                 </td>
+                 <td align="center">
+                     <form>
+                         <button class="knopka_1" type="button">
+                             <p>
+                             <p>
+                                 @Html.ActionLink("Удалить существующую роль", "", new { id =  @ViewBag.ListUserId[ViewBag.Num] })
+                             </p>
+                         </button>
+                     </form>
+                 </td>
+             </table>
+         </td>
+         <td>
+             @(ViewBag.Num = ViewBag.Num + 1)
+         </td>
+     </tr>
+          
         }
     </table>
 

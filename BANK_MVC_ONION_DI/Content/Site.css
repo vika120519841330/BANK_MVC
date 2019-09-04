@@ -24,7 +24,7 @@ textarea {
 }
 
 button.knopka_1 {
-    color: #fff;
+    color: #1bf2de;
     background: #00ff21;
     padding: 5px;
     border-radius: 5px;
@@ -32,17 +32,17 @@ button.knopka_1 {
 }
 
     button.knopka_1:hover {
-        background: #00ff21;
+        background: #1bf2de;
     }
 
 button.knopka_2 {
-    color: #fff;
-    background: #1bf2de;
+    color: #968c8c;
+    background: #c6bcbc;
     padding: 5px;
     border-radius: 5px;
     border: 2px solid #FF8247;
 }
 
     button.knopka_2:hover {
-        background: #1bf2de;
+        background: #c6bcbc;
     }

@@ -6,20 +6,20 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>@ViewBag.TODO</title>
-    </head>
-    <body>
-        @using (Html.BeginForm("AddNewRole_Post", "Role", FormMethod.Post))
-        {
-            <div class="form-horizontal" align="center">
-                <p>Введите логин пользователя: </p>
-                @Html.TextBox("login", "Логин пользователя")
-                <p>Введите название роли :</p>
-                @Html.TextBox("role", "Название роли")
-                <p><input type="submit" value="ДОБАВИТЬ" /></p>
-                </div>
-         }
-    </body>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.TODO</title>
+</head>
+<body>
+    @using (Html.BeginForm("AddNewRole_Post", "Role", FormMethod.Post))
+    {
+    <div class="form-horizontal" align="center">
+        <p>Имя пользователя: </p>
+        @Html.TextBox("name", @TempData["NameOfUser"])
+        <p>Выберите роль :</p>
+        @Html.TextBox("role", "Выберите роль")
+        <p><input type="submit" value="ДОБАВИТЬ" /></p>
+    </div>
+    }
+</body>
 </html>

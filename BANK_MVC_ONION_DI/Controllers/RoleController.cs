@@ -29,6 +29,7 @@ namespace BANK_MVC_ONION_DI.Services
         public ActionResult AllRoles()
         {
             Dictionary<string, List<string>> rolesANDusers = new Dictionary<string, List<string>>();
+            List<string> allUsersId = new List<string>();
             var allUsers = userManager.Users.ToList();
             foreach (var user in allUsers)
             {
@@ -47,18 +48,22 @@ namespace BANK_MVC_ONION_DI.Services
                         rolesANDusers[user.UserName].Add(", ");
                         rolesANDusers[user.UserName].Add(role);
                     }
-                    ViewBag.UserId = user.Id;
                 }
+                allUsersId.Add(user.Id);
             }
+            ViewBag.Num = 0;
+            ViewBag.ListUserId = allUsersId;
             ViewBag.Header = "СПИСОК ВСЕХ ЗАРЕГИСТРИРОВАННЫХ ПОЛЬЗОВАТЕЛЕЙ И ИХ РОЛЕЙ:";
             return View(rolesANDusers);
         }
 
         //Добавление для пользователя новой роли - по логину пользователя
         // GET: /Manage/AddNewRole
-        public ActionResult AddNewRole_Get()
+        public ActionResult AddNewRole_Get(string id)
         {
             ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
+            var foundUser = userManager.FindById(id);
+            TempData ["NameOfUser"] = foundUser.UserName;
             return View("AddNewRole_Get");
         }
 
@@ -66,21 +71,21 @@ namespace BANK_MVC_ONION_DI.Services
         [HttpPost]
         //[ValidateAntiForgeryToken]
         //[Authorize(Roles = "admin")]
-        public ActionResult AddNewRole_Post(string login, string role)
+        public ActionResult AddNewRole_Post(string name, string role)
         {
             ViewBag.TODO = "ДОБАВЛЕНИЕ НОВОЙ РОЛИ ДЛЯ ЗАРЕГИСТРИРОВАННОГО ПОЛЬЗОВАТЕЛЯ";
-            var foundUser = userManager.FindByName(login);
+            var foundUser = userManager.FindByName(name);
             if (foundUser == null)
             {
                 ViewBag.Result = "Пользователь с таким логином не зарегистрирован!!";
                 return View("AddNewRole_Post");
             }
             // проверить - возможно у запрашиваемого пользователя уже есть эта роль
-            //if (userManager.Users.i.IsInRole(role))
-            //{
-            //    ViewBag.Result = "Пользователь уже наделен правами запрашиваемой роли!!";
-            //    return View("AddNewRole_Post", ViewBag.Result);
-            //}
+            if (userManager.IsInRole(foundUser.Id, role))
+            {
+                ViewBag.Result = "Пользователь уже наделен правами запрашиваемой роли!!";
+                return View("AddNewRole_Post", ViewBag.Result);
+            }
             var foundRole = roleManager.FindByName(role);
             if (foundRole == null)
             {
@@ -92,9 +97,18 @@ namespace BANK_MVC_ONION_DI.Services
                 const int num = 0;
                 ViewBag.Num = num;
                 userManager.AddToRole(foundUser.Id, role);
-                IList<IdentityUserRole> listOfRolesOfUser = foundUser.Roles.ToList();
-                ViewBag.listofrolesofuser = listOfRolesOfUser;
-                ViewBag.Result = $"Пользователь с логином: {foundUser.UserName}\0\0 обладает следующими ролями:";
+                IList<IdentityUserRole> listOfIdOfRolesOfUser = foundUser.Roles.ToList();
+
+                IList<string> listOfNameOfRolesOfUser = new List<string>();
+                foreach (var t in listOfIdOfRolesOfUser)
+                {
+                    string tempRoleId = t.RoleId;
+                    var tempRoleName = roleManager.Roles.FirstOrDefault(_ => _.Id == tempRoleId).Name;
+                    listOfNameOfRolesOfUser.Add(tempRoleName);
+                }
+
+                ViewBag.listofrolesofuser = listOfNameOfRolesOfUser;
+                ViewBag.Result = $"Пользователь с именем: {foundUser.UserName}\0\0 обладает следующими ролями:";
                 return View("AddNewRole_Success");
             }
         }
