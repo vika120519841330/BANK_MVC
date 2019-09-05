@@ -29,7 +29,7 @@ namespace BANK_MVC_ONION_DI.Validation
                     this.ErrorMessage = "У расчетного счета д.б. задан ID владельца р/с!!!";
                     return false;
                 }
-                if ((bill.BillNumber.Length < 20) || (bill.BillNumber.Length > 20))
+                if (bill.BillNumber.Length != 20)
                 {
                     this.ErrorMessage = "Длина р/с должна составлять 20 символов!!!";
                     return false;

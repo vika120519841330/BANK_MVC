@@ -349,6 +349,8 @@
     <Content Include="Views\Client\Create_Get.cshtml" />
     <Content Include="Views\Client\Create_Post.cshtml" />
     <Content Include="Views\Client\ReedAll.cshtml" />
+    <Content Include="Views\Bill\Update_Get.cshtml" />
+    <Content Include="Views\Bill\Update_Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

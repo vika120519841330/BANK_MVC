@@ -50,7 +50,7 @@ namespace InfrastructureServices.Repositories
                 BillBalance = 120,
                 BillNumber = "12345611111112225841",
                 Client_InfraModelId = 1,
-                ClientOwnerOfBill = c1
+                //ClientOwnerOfBill = c1
 
             };
             DB_Bills.Add(b1);
@@ -60,7 +60,7 @@ namespace InfrastructureServices.Repositories
                 BillBalance = 158880,
                 BillNumber = "12345612345678921782",
                 Client_InfraModelId = 2,
-                ClientOwnerOfBill = c2
+                //ClientOwnerOfBill = c2
             };
             DB_Bills.Add(b2);
             b3 = new Bill_InfraModel
@@ -69,7 +69,7 @@ namespace InfrastructureServices.Repositories
                 BillBalance = 1100,
                 BillNumber = "12345125874563216783",
                 Client_InfraModelId = 2,
-                ClientOwnerOfBill = c2
+                //ClientOwnerOfBill = c2
             };
             DB_Bills.Add(b3);
             #endregion

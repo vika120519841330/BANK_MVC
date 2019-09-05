@@ -10,6 +10,6 @@ namespace Infrastructure.Models
         public double BillBalance { get; set; }
         [ForeignKey("Client_InfraModel")]
         public int Client_InfraModelId { get; set; }
-        public Client_InfraModel ClientOwnerOfBill { get; set; }
+        //public Client_InfraModel ClientOwnerOfBill { get; set; }
     }
 }

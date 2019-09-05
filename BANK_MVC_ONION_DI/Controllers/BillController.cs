@@ -103,29 +103,30 @@ namespace BANK_MVC_ONION_DI.Controllers
             }
             else
             {
-                ViewBag.Message = $"Обновление сведений по расчетному счету c ID № {id}:";
                 return View(bill);
             }
         }
-        [HttpPut]
+        [HttpPost]
         public ActionResult Update_Put(Bill_ViewModel inst)
         {
             if (inst == null)
             {
                 ModelState.AddModelError("UpdateBillNull", "Не указаны данные для обновления сведений о расчетном счете!!!");
+                ViewBag.Result = ModelState.Values.ToString();
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ModelState.Values.ToString());
             }
             if (!(new BillModelAttribute().IsValid(inst)))
             {
                 ModelState.AddModelError("UpdateBillNotVal", "Указанные для обновления расчетного счета данные не валидны");
-                ViewBag.Message = "Валидация НЕ пройдена";
+                ViewBag.Result = "Валидация НЕ пройдена";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ModelState.Values.ToString());
             }
             else
             {
-                billService.Create(inst.BillFromViewToDomain());
-                ViewBag.Message = $"Обновление сведений по расчетному счету c ID № {inst.Id} прошло успешно!";
-                return View();
+                ViewBag.Message = $"Обновление сведений по расчетному счету c ID № {inst.Id}:";
+                billService.Update(inst.BillFromViewToDomain());
+                ViewBag.Result = $"Обновление сведений по расчетному счету c ID № {inst.Id} прошло успешно!";
+                return View("~/Views/Bill/Update_Success.cshtml");
             }
         }
 

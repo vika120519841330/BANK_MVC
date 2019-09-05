@@ -40,7 +40,13 @@ namespace InfrastructureServices.Repositories
 
         public void UpdateBill(Bill_InfraModel inst)
         {
-            context.Entry(inst).State = EntityState.Modified;
+            //context.Entry(inst).State = EntityState.Modified;
+            var tempInst = context.Bills.FirstOrDefault(_ => _.Id == inst.Id);
+            //tempInst = inst;
+            tempInst.Id = inst.Id;
+            tempInst.BillBalance = inst.BillBalance;
+            tempInst.BillNumber = inst.BillNumber;
+            tempInst.Client_InfraModelId = inst.Client_InfraModelId;
             context.SaveChanges();
         }
         public void DeleteBill(int id)
