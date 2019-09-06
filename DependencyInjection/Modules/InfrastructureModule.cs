@@ -34,7 +34,7 @@ namespace DependencyInjection.Modules
             //new ContainerControlledLifetimeManager()
             );
             container.RegisterType<IBill_Repository, Bill_Repository>(
-            new ContainerControlledLifetimeManager()
+            //new ContainerControlledLifetimeManager()
             );
 
 

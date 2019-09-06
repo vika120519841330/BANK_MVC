@@ -42,7 +42,14 @@ namespace InfrastructureServices.Repositories
 
         public void UpdateCl(Client_InfraModel inst)
         {
-            context.Entry(inst).State = EntityState.Modified;
+            //context.Entry(inst).State = EntityState.Modified;
+            var tempInst = context.Clients.FirstOrDefault(_ => _.Id == inst.Id);
+            tempInst.Id = inst.Id;
+            tempInst.ClientEMail = inst.ClientEMail;
+            tempInst.ClientMarkJuridical = inst.ClientMarkJuridical;
+            tempInst.ClientPhone = inst.ClientPhone;
+            tempInst.ClientTaxpayNum = inst.ClientTaxpayNum;
+            tempInst.ClientTitle = inst.ClientTitle;
             context.SaveChanges();
         }
         public void DeleteCl(int id)

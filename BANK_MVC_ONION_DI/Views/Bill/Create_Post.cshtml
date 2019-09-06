@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width;" />
+    <title>@ViewBag.Message</title>
+</head>
+<body>
+    <br /> <br />
+    <div>
+        <table class="table" border="1" cellpadding="4" cellspacing="0" align="center" height="100" style="background-color:lightsteelblue">
+            <tr>
+                <th align="center" valign="middle">
+                    <h7>
+                        @ViewBag.Message
+                    </h7>
+                </th>
+            </tr>
+
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("К СПИСКУ", "ReedAll", "Bill")
+    </p>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 using BANK_MVC_ONION_DI.Identity;
 using BANK_MVC_ONION_DI.Initializer;
+using FluentValidation.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,6 +17,8 @@ namespace BANK_MVC_ONION_DI
         protected void Application_Start()
         {
             Database.SetInitializer<ApplicationDbContext>(new UserRoleDbInitializer());
+
+            FluentValidationModelValidatorProvider.Configure();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

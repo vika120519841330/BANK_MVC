@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace BANK_MVC_ONION_DI.Services
 {
+    [Authorize(Roles = "admin")]
     public class RoleController : Controller
     {
         private ApplicationUserManager userManager;

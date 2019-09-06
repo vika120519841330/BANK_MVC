@@ -22,7 +22,8 @@ namespace BANK_MVC_ONION_DI.Controllers
         [HttpGet]
         public ActionResult ReedAll()
         {
-            ViewBag.Header = "ПЕРЕЧЕНЬ ВСЕХ РАСЧЕТНЫХ СЧЕТОВ БАНКА";
+            ViewBag.Title = "ПРОСМОТР ВСЕХ РАСЧЕТНЫХ СЧЕТОВ БАНКА";
+            ViewBag.Header = "РАСЧЕТНЫЕ СЧЕТА:";
             var bills = billService.GetAll()
                 .Select(_ => _.BillFromDomainToView())
                 .OrderBy(t => t.Client_ViewModelId)
@@ -34,16 +35,20 @@ namespace BANK_MVC_ONION_DI.Controllers
         [HttpGet]
         public ActionResult ReedOne_Get_1()
         {
+            ViewBag.Title = "ПОИСК Р/С ПО ID";
             ViewBag.Message = "Поиск расчетного счета по ID:";
             return View();
         }
         [HttpGet]
         public ActionResult ReedOne_Get_2(int id)
         {
+            ViewBag.Title = $"ПОИСК Р/С ПО ID № {id}";
+            ViewBag.Header = $"Сведения о расчетном счете с идентификатором № {id}:";
             Bill_ViewModel bill = billService.Get(id).BillFromDomainToView();
             if (bill == null)
             {
                 ModelState.AddModelError("GetClientById", "Расчетный счет с запрашиваемым  идентификатором не существует!!!");
+                ViewBag.Message = ModelState.Values.ToString();
                 return new HttpStatusCodeResult(404, ModelState.Values.ToString());
             }
             if (!(new BillModelAttribute().IsValid(bill)))
@@ -54,19 +59,20 @@ namespace BANK_MVC_ONION_DI.Controllers
             }
             else
             {
-                ViewBag.Header($"Сведения о расчетном счете с идентификатором № {id}:");
                 return View(bill);
             }
         }
         [HttpGet]
         public ActionResult Create_Get()
         {
+            ViewBag.Title = "ДОБАВЛЕНИЕ НОВОГО Р/С";
             ViewBag.Message = "Добавление нового расчетного счета для клиента:";
             return View();
         }
         [HttpPost]
         public ActionResult Create_Post(Bill_ViewModel inst)
         {
+            ViewBag.Title = "ДОБАВЛЕНИЕ НОВОГО Р/С";
             if (inst == null)
             {
                 ModelState.AddModelError("CreateBillNull", "Не указаны данные для создания расчетного счета!!!");
@@ -81,7 +87,7 @@ namespace BANK_MVC_ONION_DI.Controllers
             else
             {
                 billService.Create(inst.BillFromViewToDomain());
-                ViewBag.Message = $"Создание нового клиента c ID № {inst.Id} прошло успешно!";
+                ViewBag.Message = "Добавление нового расчетного счета для клиента прошло успешно!";
                 return View();
             }
         }
@@ -89,6 +95,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         [HttpGet]
         public ActionResult Update_Get(int id)
         {
+            ViewBag.Title = $"ОБНОВЛЕНИЕ СВЕДЕНИЙ О Р/С с ID №{id}";
             Bill_ViewModel bill = billService.Get(id).BillFromDomainToView();
             if (bill == null)
             {
@@ -109,6 +116,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         [HttpPost]
         public ActionResult Update_Put(Bill_ViewModel inst)
         {
+            ViewBag.Title = $"ОБНОВЛЕНИЕ СВЕДЕНИЙ О Р/С с ID №{inst.Id}";
             if (inst == null)
             {
                 ModelState.AddModelError("UpdateBillNull", "Не указаны данные для обновления сведений о расчетном счете!!!");
@@ -133,12 +141,14 @@ namespace BANK_MVC_ONION_DI.Controllers
         [HttpGet]
         public ActionResult Delete_Get_1()
         {
+            ViewBag.Title = "УДАЛЕНИЕ Р/С";
             ViewBag.Message = "Введите идентификационный номер расчетного счета(ID), подлежащего удалению:";
             return View();
         }
         [HttpGet]
         public ActionResult Delete_Get_2(int id)
         {
+            ViewBag.Title = $"УДАЛЕНИЕ Р/С с ID №{id}";
             Bill_ViewModel bill = billService.Get(id).BillFromDomainToView();
             if (bill == null)
             {
@@ -160,6 +170,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         [HttpDelete]
         public ActionResult Delete_End(int id)
         {
+            ViewBag.Title = $"ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ Р/С с ID №{id}";
             Bill_ViewModel bill = billService.Get(id).BillFromDomainToView();
             if (bill == null)
             {

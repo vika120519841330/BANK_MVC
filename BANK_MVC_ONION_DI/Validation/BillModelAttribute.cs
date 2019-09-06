@@ -14,16 +14,6 @@ namespace BANK_MVC_ONION_DI.Validation
             var bill = value as Bill_ViewModel;
             if (bill != null)
             {
-                if ((bill.Id <= 0) || (bill.Id > 10000000))
-                {
-                    this.ErrorMessage = "Идентификационный номер р/с должен находится в пределах от 1 до 10 000 000!!!";
-                    return false;
-                }
-                //if (bill.ClientOwnerOfBill == null)
-                //{
-                //    this.ErrorMessage = "Расчетный счет не может существовать без владельца!!!";
-                //    return false;
-                //}
                 if (bill.Client_ViewModelId == 0)
                 {
                     this.ErrorMessage = "У расчетного счета д.б. задан ID владельца р/с!!!";

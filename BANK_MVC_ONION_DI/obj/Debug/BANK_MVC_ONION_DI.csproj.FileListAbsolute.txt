@@ -588,3 +588,5 @@ D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC\BANK_MVC_toGit\BANK_MVC_ONIO
 D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC\BANK_MVC_toGit\BANK_MVC_ONION_DI\obj\Debug\BANK_MVC_ONION_DI.csproj.CopyComplete
 D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC\BANK_MVC_toGit\BANK_MVC_ONION_DI\obj\Debug\BANK_MVC_ONION_DI.dll
 D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC\BANK_MVC_toGit\BANK_MVC_ONION_DI\obj\Debug\BANK_MVC_ONION_DI.pdb
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\BANK_MVC_ONION_DI\bin\FluentValidation.Mvc.dll
+D:\Program files\ASP.NET\ASP.NET_HomeTasks\BANK_MVC_toGit\BANK_MVC_ONION_DI\bin\FluentValidation.Mvc.xml

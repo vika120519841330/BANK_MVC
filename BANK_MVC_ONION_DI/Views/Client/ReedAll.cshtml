@@ -12,13 +12,15 @@
     <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
 </head>
 <body>
+    <br />
     <form>
-        <button class="knopka_1" type="button">
+        <button class="knopka_2" type="button">
             <p>
                 @Html.ActionLink("Добавить нового клиента", "Create_Get")
             </p>
         </button>
     </form>
+    <br />
     <br />
     <form>
         <button class="knopka_2" type="button">
@@ -27,7 +29,8 @@
             </p>
         </button>
     </form>
-
+    <br />
+    <br />
     <table class="table" border="1" cellpadding="4" cellspacing="0" align="center">
         <tr>
             <th colspan="8">
@@ -35,6 +38,10 @@
             </th>
         </tr>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.ClientTitle)
             </th>
@@ -57,29 +64,36 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientMarkJuridical)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientTaxpayNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientPhone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClientEMail)
-                </td>
-                <td>
-                    @Html.ActionLink("Редактировать", "Update_Get", new { Id = item.Id }) |
-                    @Html.ActionLink("Просмотреть", "ReedOne_Get_2", new { Id = item.Id }) |
-                    @Html.ActionLink("Удалить", "Delete_Get_2", new { Id = item.Id })
-                </td>
-            </tr>
-         }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientMarkJuridical)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientTaxpayNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientEMail)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Update_Get", new { Id = item.Id }) |
+            @Html.ActionLink("Просмотреть", "ReedOne_Get_2", new { Id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete_Get_2", new { Id = item.Id })
+        </td>
+    </tr>
+        }
     </table>
+    <div>
+        @Html.ActionLink("НА ДОМАШНЮЮ СТРАНИЦУ", "Index", "Home")
+    </div>
 </body>
 </html>

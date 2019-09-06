@@ -10,7 +10,6 @@ using FluentValidation.Attributes;
 
 namespace BANK_MVC_ONION_DI.Controllers
 {
-    [Validator(typeof(ClientModelValidator))]
     public class ClientController : Controller
     {
         private readonly IClient clientService;
@@ -24,7 +23,8 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/all")]
         public ActionResult ReedAll()
         {
-            ViewBag.Header = "ПЕРЕЧЕНЬ ВСЕХ КЛИЕНТОВ БАНКА";
+            ViewBag.Title = "ПРОСМОТР ВСЕХ КЛИЕНТОВ БАНКА";
+            ViewBag.Header = "КЛИЕНТЫ:";
             IList<Client_ViewModel> clients = clientService.GetAll()
                 .Select(_ => _.ClientFromDomainToView())
                 .ToList()
@@ -37,6 +37,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/one")]
         public ActionResult ReedOne_Get_1()
         {
+            ViewBag.Title = "ПОИСК КЛИЕНТА БАНКА ПО ID";
             ViewBag.Message = "Поиск клиента по ID:";
             return View();
         }
@@ -44,6 +45,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/one/{id:int}")]
         public ActionResult ReedOne_Get_2(int id)
         {
+            ViewBag.Title = $"ПОИСК КЛИЕНТА БАНКА С ID №{id}";
             Client_ViewModel client = clientService.Get(id).ClientFromDomainToView();
             if (client == null)
             {
@@ -68,6 +70,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/create")]
         public ActionResult Create_Get()
         {
+            ViewBag.Title = "ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА БАНКА";
             ViewBag.Message = "Добавление нового клиента:";
             return View();
         }
@@ -76,6 +79,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("Client/CreatCreate_Poste_Post")]
         public ActionResult Create_Post(Client_ViewModel inst)
         {
+            ViewBag.Title = $"ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА БАНКА С ID №{inst.Id}";
             if (inst == null)
             {
                 ModelState.AddModelError("CreateClientNull", "Не указаны данные для создания клиента!!!");
@@ -100,6 +104,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/update")]
         public ActionResult Update_Get(int id)
         {
+            ViewBag.Title = $"ОБНОВЛЕНИЕ СВЕДЕНИЙ О КЛИЕНТЕ БАНКА с ID №{id}";
             Client_ViewModel client = clientService.Get(id).ClientFromDomainToView();
             if (client == null)
             {
@@ -122,6 +127,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/update/{id:int}")]
         public ActionResult Update_Put(Client_ViewModel inst)
         {
+            ViewBag.Title = $"ОБНОВЛЕНИЕ СЕДЕНИЙ О КЛИЕНТЕ БАНКА С ID №{inst.Id}";
             if (inst == null)
             {
                 ModelState.AddModelError("UpdateClientNull", "Не указаны данные для обновления сведений о клиенте!!!");
@@ -131,7 +137,9 @@ namespace BANK_MVC_ONION_DI.Controllers
             {
                 ModelState.AddModelError("UpdateClientNotVal2", "Указанные для обновления сведения о клиенте не валидны!!!");
                 ViewBag.Message = "Валидация НЕ пройдена";
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ModelState.Values.ToString());
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ModelState.Values.ToString());
+                return View("Update_Get");
+
             }
             else
             {
@@ -153,6 +161,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/delete/{id:int}")]
         public ActionResult Delete_Get_2(int id)
         {
+            ViewBag.Title = $"УДАЛЕНИЕ КЛИЕНТА БАНКА С ID №{id}";
             Client_ViewModel client = clientService.Get(id).ClientFromDomainToView();
             if (client == null)
             {
@@ -172,6 +181,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/delete/{id:int}")]
         public ActionResult Delete_End(int id)
         {
+            ViewBag.Title = $"ПОДТВЕРЖДЕНИЕ УДАЛЕНИЯ КЛИЕНТА БАНКА С ID №{id}";
             Client_ViewModel temp = clientService.Get(id).ClientFromDomainToView();
             if (temp == null)
             {

@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -25,6 +25,9 @@
                 </th>
             </tr>
         </table>
+    </div>
+    <div>
+        @Html.ActionLink("К СПИСКУ", "ReedAll", "Client")
     </div>
 </body>
 </html>

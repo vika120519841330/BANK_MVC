@@ -2,7 +2,7 @@
 @model Client_ViewModel
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ДОБАВЛЕНИЕ НОВОГО КЛИЕНТА</title>
+    <title>@ViewBag.Title</title>
 </head>
 <body>
     @using (Html.BeginForm("Create_Post", "Client", FormMethod.Post))
@@ -72,7 +72,7 @@
     }
     <br />
     <div align="center">
-        @Html.ActionLink("НАЗАД", "ReedAll")
+            @Html.ActionLink("К СПИСКУ", "ReedAll", "Client")
     </div>
 </body>
 </html>

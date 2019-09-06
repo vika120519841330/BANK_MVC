@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -25,14 +25,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var r in @ViewBag.listofrolesofuser)
+            @foreach (var r in @ViewBag.listofrolesofuser)
             {
-            <tr>
-                <td>@(++ViewBag.Num)</td>
-                <td>@r.RoleId</td>
-            </tr>
+                <tr>
+                    <td>@(++ViewBag.Num)</td>
+                    <td>@r.RoleId</td>
+                </tr>
             }
         </tbody>
+        <div>
+            @Html.ActionLink("К СПИСКУ", "AllRoles", "Role")
+        </div>
     </table>
+    <div>
+        @Html.ActionLink("К СПИСКУ", "AllRoles", "Role")
+    </div>
 </body>
 </html>

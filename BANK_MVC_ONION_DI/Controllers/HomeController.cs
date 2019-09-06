@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BANK_MVC_ONION_DI.Identity;
+using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +12,7 @@ namespace BANK_MVC_ONION_DI.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 

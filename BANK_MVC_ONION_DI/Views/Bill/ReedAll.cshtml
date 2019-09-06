@@ -12,13 +12,15 @@
     <title>ViewBag.Header</title>
 </head>
 <body>
+    <br />
     <form>
-        <button class="knopka_1" type="button">
+        <button class="knopka_2" type="button">
             <p>
                 @Html.ActionLink("Добавить новый р/с", "Create_Get")
             </p>
         </button>
     </form>
+    <br />
     <br />
     <form>
         <button class="knopka_2" type="button">
@@ -27,6 +29,7 @@
             </p>
         </button>
     </form>
+    <br />
     <table class="table" border="1" cellpadding="4" cellspacing="0" align="center">
         <tr>
             <th colspan="7">
@@ -34,6 +37,9 @@
             </th>
         </tr>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.BillNumber)
             </th>
@@ -52,6 +58,9 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.BillNumber)
                 </td>
                 <td>
@@ -67,7 +76,9 @@
                 </td>
             </tr>
         }
-
     </table>
+    <div>
+        @Html.ActionLink("НА ДОМАШНЮЮ СТРАНИЦУ", "Index", "Home")
+    </div>
 </body>
 </html>

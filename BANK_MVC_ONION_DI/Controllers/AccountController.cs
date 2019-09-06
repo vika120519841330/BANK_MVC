@@ -35,12 +35,12 @@ namespace BANK_MVC_ONION_DI.Controllers
         }
 
         // Вспомогательный метод - для определения относится ли зарегистрированный ользователь к определеноой роли?
-        public bool CheckAccountIsInRole(string email, string role)
-        {
-            var user = userManager.Users.FirstOrDefault(_ => _.Email == email);
-            var inrole = userManager.IsInRole(user.Id, role);
-            return inrole;
-        }
+        //public bool CheckAccountIsInRole(string email, string role)
+        //{
+        //    var user = userManager.Users.FirstOrDefault(_ => _.Email == email);
+        //    var inrole = userManager.IsInRole(user.Id, role);
+        //    return inrole;
+        //}
 
         // POST: /Account/Login
         [HttpPost]
@@ -58,10 +58,10 @@ namespace BANK_MVC_ONION_DI.Controllers
             {
                 case SignInStatus.Success:
                     {
-                        if (this.CheckAccountIsInRole(model.Email, "admin"))
-                        {
-                            return View("~/Views/Home/Index_Admin.cshtml");
-                        }
+                        //if (this.CheckAccountIsInRole(model.Email, "admin"))
+                        //{
+                        //    return View("~/Views/Home/Index_Admin.cshtml");
+                        //}
                         return RedirectToLocal(returnUrl);
                     }
                 case SignInStatus.LockedOut:
