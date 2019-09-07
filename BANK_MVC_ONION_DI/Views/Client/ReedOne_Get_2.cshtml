@@ -1,0 +1,65 @@
+﻿@using BANK_MVC_ONION_DI.Models
+@model Client_ViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>@ViewBag.Message</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientMarkJuridical)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientMarkJuridical)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientTaxpayNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientTaxpayNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientEMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientEMail)
+        </dd>
+        <dt>
+            Расчетные счета:
+        </dt>
+        <dd>
+            @*@Html.Partial("~/Views/Bill/AllBillsByIdOfClient.cshtml", new ViewDataDictionary { { "List<Bill_ViewModel>", @ViewBag.BillsOfClient } }) ;*@
+            @Html.Partial("~/Views/Bill/AllBillsByIdOfClient.cshtml", new ViewDataDictionary { { "IEnumerable<Bill_ViewModel>", (IEnumerable<Bill_ViewModel>)TempData["BillsOfClient"] } }) ;
+
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Update_Get", new { id = Model.Id }) |
+    @Html.ActionLink("К СПИСКУ", "ReedAll", "Client")
+</p>

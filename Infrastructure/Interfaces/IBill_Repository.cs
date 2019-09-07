@@ -9,6 +9,7 @@ namespace Infrastructure.Interfaces
 {
     public interface IBill_Repository
     {
+        IEnumerable<Bill_InfraModel> AllBillsByIdOfClient(int id); // получение всех р/с клиента по его id
         IList<Bill_InfraModel> GetAllBills(); // получение всех объектов
         Bill_InfraModel GetBill(int id); // получение одного объекта по id
         void CreateBill(Bill_InfraModel item); // создание объекта

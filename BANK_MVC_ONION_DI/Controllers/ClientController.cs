@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using FluentValidation.Attributes;
 
 namespace BANK_MVC_ONION_DI.Controllers
 {
     public class ClientController : Controller
     {
         private readonly IClient clientService;
-        public ClientController(IClient _clientService)
+        private readonly IBill billService;
+        public ClientController(IClient _clientService, IBill _billService)
         {
             this.clientService = _clientService;
+            this.billService = _billService;
         }
 
         // Отображение всех клиентов банка
@@ -37,7 +38,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/one")]
         public ActionResult ReedOne_Get_1()
         {
-            ViewBag.Title = "ПОИСК КЛИЕНТА БАНКА ПО ID";
+            ViewBag.Title = "ПРОСМОТР КЛИЕНТА БАНКА ПО ID";
             ViewBag.Message = "Поиск клиента по ID:";
             return View();
         }
@@ -45,7 +46,7 @@ namespace BANK_MVC_ONION_DI.Controllers
         //[Route("client/one/{id:int}")]
         public ActionResult ReedOne_Get_2(int id)
         {
-            ViewBag.Title = $"ПОИСК КЛИЕНТА БАНКА С ID №{id}";
+            ViewBag.Title = $"ПРОСМОТР КЛИЕНТА БАНКА С ID №{id}";
             Client_ViewModel client = clientService.Get(id).ClientFromDomainToView();
             if (client == null)
             {
@@ -61,6 +62,10 @@ namespace BANK_MVC_ONION_DI.Controllers
             else
             {
                 ViewBag.Message = $"Сведения о клиенте с ID № {id}:";
+                BillController bc = new BillController(billService);
+                IEnumerable<Bill_ViewModel> billsOfcl = bc.AllBillsByIdOfClient(id);
+                TempData["BillsOfClient"] = billsOfcl;
+                //ViewBag.BillsOfClient = billsOfcl;
                 return View(client);
             }
         }

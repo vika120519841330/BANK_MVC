@@ -1,0 +1,51 @@
+﻿@using BANK_MVC_ONION_DI.Models
+@model IEnumerable<Bill_ViewModel>
+
+<p>
+    @Html.ActionLink("ДОБАВИТЬ Р/С", "Create_Get")
+</p>
+<table class="table">
+    <tr>
+        <th colspan="4">
+            @ViewBag.Header
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            BillNumber
+        </th>
+        <th>
+            BillBalance
+        </th>
+        <th>
+            Client_ViewModelId
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BillNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BillBalance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Client_ViewModelId)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

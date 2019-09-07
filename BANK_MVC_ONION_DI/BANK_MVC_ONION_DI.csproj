@@ -354,6 +354,9 @@
     <Content Include="Views\Bill\Update_Success.cshtml" />
     <Content Include="Views\Bill\Create_Get.cshtml" />
     <Content Include="Views\Bill\Create_Post.cshtml" />
+    <Content Include="Views\Client\ReedOne_Get_2.cshtml" />
+    <Content Include="Views\Bill\AllBillsByIdOfClient.cshtml" />
+    <Content Include="Views\Client\AllBillsByIdOfClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -376,17 +379,13 @@
       <Project>{CC0839C4-087E-467D-83AF-BC2B7471453B}</Project>
       <Name>DependencyInjection</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DomainServices\DomainServices.csproj">
+      <Project>{8DC181EE-6E3A-462B-AB82-DF9999B23A9A}</Project>
+      <Name>DomainServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{172bef08-9428-4e2f-8f09-68c7076d8bab}</Project>
       <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InfrastructureServices\InfrastructureServices.csproj">
-      <Project>{A4E2542B-4CC1-4093-A5BF-37C6C3385703}</Project>
-      <Name>InfrastructureServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{DDE0E96E-D562-4EF3-85F5-294ED76A811D}</Project>
-      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

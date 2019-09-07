@@ -16,6 +16,17 @@ namespace InfrastructureServices.Repositories
             //this.context = new MyContext();
             this.context = _context;
         }
+
+        //Вспомогательный метод - возвращает список всех счетов, закрепленных за выбранным клиентом банка по его Id
+        public IEnumerable<Bill_InfraModel> AllBillsByIdOfClient(int id)
+        {
+            var billsOfClient = context.Bills
+                .Where(_ => _.Client_InfraModelId == id)
+                .ToList()
+                ;
+            return billsOfClient;
+        }
+
         public IList<Bill_InfraModel> GetAllBills()
         {
             var bills = context.Bills

@@ -2,10 +2,8 @@
 using BANK_MVC_ONION_DI.Models;
 using BANK_MVC_ONION_DI.Validation;
 using Domain.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Net;
 
@@ -19,6 +17,26 @@ namespace BANK_MVC_ONION_DI.Controllers
         {
             this.billService = _billService;
         }
+
+        //Вспомогательный метод - выводит в частичное представление список всех счетов, закрепленных за выбранным клиентом банка по его Id
+        public IEnumerable<Bill_ViewModel> AllBillsByIdOfClient(int id)
+        {
+            ViewBag.Title = $"ПРОСМОТР ВСЕХ РАСЧЕТНЫХ СЧЕТОВ КЛИЕНТА С ID № {id}";
+            ViewBag.Header = $"РАСЧЕТНЫЕ СЧЕТА КЛИЕНТА С ID № {id}:";
+            IEnumerable<Bill_ViewModel> billsOfClient = billService.AllBillsByIdOfClient(id)
+                .Select(_ => _.BillFromDomainToView())
+                .ToList()
+                ;
+            //var billsOfClient = billService.GetAll()
+            //    .Select(_ => _.BillFromDomainToView())
+            //    .Where(t => t.Client_ViewModelId == id)
+            //    .ToList()
+            //    ;
+            //return PartialView(billsOfClient);
+            return billsOfClient;
+        }
+
+
         [HttpGet]
         public ActionResult ReedAll()
         {

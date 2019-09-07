@@ -49,7 +49,7 @@ namespace InfrastructureServices.Repositories
                 Id = 1,
                 BillBalance = 120,
                 BillNumber = "12345611111112225841",
-                Client_InfraModelId = 1,
+                Client_InfraModelId = 1
                 //ClientOwnerOfBill = c1
 
             };
@@ -59,7 +59,7 @@ namespace InfrastructureServices.Repositories
                 Id = 2,
                 BillBalance = 158880,
                 BillNumber = "12345612345678921782",
-                Client_InfraModelId = 2,
+                Client_InfraModelId = 2
                 //ClientOwnerOfBill = c2
             };
             DB_Bills.Add(b2);
@@ -68,12 +68,23 @@ namespace InfrastructureServices.Repositories
                 Id = 3,
                 BillBalance = 1100,
                 BillNumber = "12345125874563216783",
-                Client_InfraModelId = 2,
+                Client_InfraModelId = 2
                 //ClientOwnerOfBill = c2
             };
             DB_Bills.Add(b3);
             #endregion
         }
+
+        //Вспомогательный метод - возвращает список всех счетов, закрепленных за выбранным клиентом банка по его Id
+        public IEnumerable<Bill_InfraModel> AllBillsByIdOfClient(int id)
+        {
+            var billsOfClient = DB_Bills
+                .Where(_ => _.Client_InfraModelId == id)
+                .ToList()
+                ;
+            return billsOfClient;
+        }
+
 
         public IList<Client_InfraModel> GetAllCl()
         {

@@ -17,6 +17,18 @@ namespace DomainServices.Services
         {
             this.billRepository = _billRepository;
         }
+
+        //Вспомогательный метод - возвращает список всех счетов, закрепленных за выбранным клиентом банка по его Id
+        public IEnumerable<Bill_DomainModel> AllBillsByIdOfClient(int id)
+        {
+            var billsOfClient = billRepository.GetAllBills()
+                .Select(_ => _.BillFromInfraToDomain())
+                .Where(t => t.Client_DomainModelId == id)
+                .ToList()
+                ;
+            return billsOfClient;
+        }
+
         public IList<Bill_DomainModel> GetAll()
         {
             return billRepository.GetAllBills()

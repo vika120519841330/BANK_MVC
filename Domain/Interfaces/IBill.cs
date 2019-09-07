@@ -9,6 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IBill
     {
+        IEnumerable<Bill_DomainModel> AllBillsByIdOfClient(int id); // получение всех р/с клиента по его id
         IList<Bill_DomainModel> GetAll(); // получение всех объектов
         Bill_DomainModel Get(int id); // получение одного объекта по id
         void Create(Bill_DomainModel item); // создание объекта

@@ -6,6 +6,9 @@ namespace InfrastructureServices.Context
 {
     public class MyContext : DbContext
     {
+        //public MyContext() : base()
+        //{
+        //}
         public MyContext(DbContextOptions<MyContext> options) : base(options)
         {
         }
