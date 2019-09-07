@@ -54,8 +54,8 @@
         </dt>
         <dd>
             @*@Html.Partial("~/Views/Bill/AllBillsByIdOfClient.cshtml", new ViewDataDictionary { { "List<Bill_ViewModel>", @ViewBag.BillsOfClient } }) ;*@
-            @Html.Partial("~/Views/Bill/AllBillsByIdOfClient.cshtml", new ViewDataDictionary { { "IEnumerable<Bill_ViewModel>", (IEnumerable<Bill_ViewModel>)TempData["BillsOfClient"] } }) ;
-
+            @*@Html.Partial("~/Views/Bill/AllBillsByIdOfClient.cshtml", new ViewDataDictionary { { "IEnumerable<Bill_ViewModel>", (IEnumerable<Bill_ViewModel>)TempData["BillsOfClient"] } }) ;*@
+            @Html.Action("PartialAllBillsByIdOfClient", "Bill", new { id =  Model.Id })
         </dd>
     </dl>
 </div>

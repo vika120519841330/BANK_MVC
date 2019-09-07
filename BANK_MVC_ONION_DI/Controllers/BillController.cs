@@ -19,10 +19,16 @@ namespace BANK_MVC_ONION_DI.Controllers
         }
 
         //Вспомогательный метод - выводит в частичное представление список всех счетов, закрепленных за выбранным клиентом банка по его Id
-        public IEnumerable<Bill_ViewModel> AllBillsByIdOfClient(int id)
+        //public IEnumerable<Bill_ViewModel> AllBillsByIdOfClient(int id)
+        //{
+        //    IEnumerable<Bill_ViewModel> billsOfClient = billService.AllBillsByIdOfClient(id)
+        //        .Select(_ => _.BillFromDomainToView())
+        //        .ToList()
+        //        ;
+        //    return billsOfClient;
+        //}
+        public PartialViewResult PartialAllBillsByIdOfClient(int id)
         {
-            ViewBag.Title = $"ПРОСМОТР ВСЕХ РАСЧЕТНЫХ СЧЕТОВ КЛИЕНТА С ID № {id}";
-            ViewBag.Header = $"РАСЧЕТНЫЕ СЧЕТА КЛИЕНТА С ID № {id}:";
             IEnumerable<Bill_ViewModel> billsOfClient = billService.AllBillsByIdOfClient(id)
                 .Select(_ => _.BillFromDomainToView())
                 .ToList()
@@ -32,8 +38,7 @@ namespace BANK_MVC_ONION_DI.Controllers
             //    .Where(t => t.Client_ViewModelId == id)
             //    .ToList()
             //    ;
-            //return PartialView(billsOfClient);
-            return billsOfClient;
+            return PartialView(billsOfClient);
         }
 
 

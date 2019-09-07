@@ -61,10 +61,11 @@ namespace BANK_MVC_ONION_DI.Controllers
             }
             else
             {
-                ViewBag.Message = $"Сведения о клиенте с ID № {id}:";
-                BillController bc = new BillController(billService);
-                IEnumerable<Bill_ViewModel> billsOfcl = bc.AllBillsByIdOfClient(id);
-                TempData["BillsOfClient"] = billsOfcl;
+                ViewBag.HeaderPartial = $"РАСЧЕТНЫЕ СЧЕТА КЛИЕНТА:";
+                ViewBag.Message = $"СВЕДЕНИЯ О КЛИЕНТЕ С ID № {id}:";
+                //BillController bc = new BillController(billService);
+                //IEnumerable<Bill_ViewModel> billsOfcl = bc.AllBillsByIdOfClient(id);
+                //TempData["BillsOfClient"] = billsOfcl;
                 //ViewBag.BillsOfClient = billsOfcl;
                 return View(client);
             }
